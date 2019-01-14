@@ -1,0 +1,257 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #ffffff url('../img/bluepattern.png'); /* Background pattern from Pixabay */
+    font-family: 'Coda', cursive;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+ }
+
+.header {
+    width: 664px;
+    background-color: #ffffff94;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+/*
+ * Styles for the deck of cards
+ */
+
+.deck {
+    width: 660px;
+    min-height: 680px;
+    background: #5eded4;
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 3em;
+}
+
+.deck .card {
+    height: 125px;
+    width: 125px;
+    background: #2e3d49;
+    font-size: 0;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+}
+
+.deck .card.open {
+    transform: rotateY(0);
+    background: #02e45c;
+    cursor: default;
+}
+
+.deck .card.show {
+    font-size: 33px;
+}
+
+.deck .card.match {
+    cursor: default;
+    background: #00a9d0;
+    font-size: 33px;
+    animation: bigger 0.4s;
+}
+
+@keyframes bigger {
+    0% { transform: scale(1);}
+    20% { transform: scale(1.05); }
+    40% { transform: scale(1.1);}
+    60% {transform: scale(1.15);}
+    80% { transform: scale(1.1);}
+    100% { transform: scale(1.05); }
+    }
+
+/*
+ * Styles for the Score Panel
+ */
+
+.score-panel {
+    text-align: left;
+    width: 345px;
+    margin: auto;
+}
+
+.score-panel .stars {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+
+.score-panel .stars li {
+    list-style: none;
+    display: inline-block;
+}
+
+.score-panel .restart {
+    float: right;
+    cursor: pointer;
+}
+
+.timer {
+    font-size: 1.3em;
+}
+
+.modal {
+    width: 100%;
+    height: 100%;
+    background-color: #0000004d;
+    position: fixed;
+    display: flex;
+    z-index: 1;
+}
+
+.modalChild {
+    width: 60%;
+    height: 50%;
+    background-color: white;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.winInfo {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    font-size: 20px;
+}
+
+.buttonReplay {
+    color: #fff;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    background: #1ecec0;
+    cursor: pointer;
+    padding: 16px 49px;
+    margin: 7px 30px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 700;
+}
+
+.deck .card.open.noCoincide {
+    animation: shake 0.4s;
+    background-color: #e64343;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(5deg); }
+  10% { transform: translate(-1px, -2px) rotate(-5deg); }
+  20% { transform: translate(-3px, 0px) rotate(5deg); }
+  30% { transform: translate(3px, 2px) rotate(3deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+    }
+}
+
+/*
+ * media queries
+
+
+ @media only screen and (min-width: 1100px) {
+    .deck {
+        width: 85%;
+        min-height: 900px;
+    }
+
+    .deck .card {
+        height: 170px;
+        width: 22%;
+    }
+
+    .score-panel {
+       font-size: 2em;
+       width: 85%;
+    }
+
+    .header {
+    width: 85%;
+    }
+}
+
+ @media only screen and (min-width: 1300px) {
+    .timer {
+        font-size: 3.3em;
+    }
+
+    .score-panel {
+       font-size: 2.2em;
+    }
+
+
+*/
+
+
+
+    @media only screen and (max-width: 780px) {
+  .deck {
+    max-width: 300px;
+    min-height: auto;
+    padding-bottom: 17px;
+  }
+
+  .deck .card {
+    height: 50px;
+    width: 50px;
+    margin-bottom: 17px;
+  }
+
+  .score-panel {
+    max-width: 70%;
+    padding-bottom: 0;
+    display: block;
+    text-align: center;
+    line-height: 1.7em;
+  }
+
+  h1 {
+    margin: 0;
+    padding: 10px 0;
+  }
+}
